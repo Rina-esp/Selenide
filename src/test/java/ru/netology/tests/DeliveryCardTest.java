@@ -20,31 +20,6 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class DeliveryCardTest {
 
-  WebDriver driver;
-
-  @BeforeAll
-  static void setupClass() {
-    WebDriverManager.chromedriver().setup();
-  }
-
-  @BeforeEach
-  public void setUp() {
-    ChromeOptions options = new ChromeOptions();
-    options.addArguments("--disable-dev-shm-usage");
-    options.addArguments("--no-sandbox");
-    options.addArguments("--headless");
-    driver = new ChromeDriver(options);
-    driver.get("http://localhost:9999");
-  }
-
-  @AfterEach
-  void teardown() {
-    if (driver != null) {
-      driver.quit();
-    }
-  }
-
-
   LocalDate date = LocalDate.now();
   LocalDate deliveryDate = date.plusDays(3);
 
