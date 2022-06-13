@@ -1,7 +1,13 @@
 package ru.netology.tests;
 
 import com.codeborne.selenide.Configuration;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -12,6 +18,27 @@ import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class DeliveryCardTest {
+
+  WebDriver driver;
+
+  @BeforeAll
+  static void setupClass() {
+    WebDriverManager.chromedriver().setup();
+  }
+
+  @BeforeEach
+  void setupTest() {
+    driver = new ChromeDriver();
+  }
+
+  @AfterEach
+  void teardown() {
+    if (driver != null) {
+      driver.quit();
+    }
+  }
+
+
   LocalDate date = LocalDate.now();
   LocalDate deliveryDate = date.plusDays(3);
 
