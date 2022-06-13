@@ -29,7 +29,7 @@ public class DeliveryCardTest {
         .click();
 
     $(withText("Успешно!")).shouldBe(visible, Duration.ofSeconds(15));
-    $("[data-test-id=\"notification\"]").shouldHave(text("Встреча успешно забронирована на " + String.valueOf(deliveryDate)), Duration.ofSeconds(15));
+    $("[data-test-id=\"notification\"]").shouldHave(text("Успешно! Встреча успешно забронирована на 16.06.2022"), Duration.ofSeconds(15));
   }
 
   @Test
