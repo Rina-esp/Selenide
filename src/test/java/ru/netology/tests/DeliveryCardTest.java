@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -27,8 +28,13 @@ public class DeliveryCardTest {
   }
 
   @BeforeEach
-  void setupTest() {
-    driver = new ChromeDriver();
+  public void setUp() {
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--disable-dev-shm-usage");
+    options.addArguments("--no-sandbox");
+    options.addArguments("--headless");
+    driver = new ChromeDriver(options);
+    driver.get("http://localhost:9999");
   }
 
   @AfterEach
